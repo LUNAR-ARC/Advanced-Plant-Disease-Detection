@@ -1,0 +1,55 @@
+{
+    "Apple___Black_rot": {
+        "cause": "Fungal infection caused by Botryosphaeria obtusa, usually developing in warm and humid conditions.",
+        "treatment": "Apply fungicides like captan or myclobutanil and remove infected leaves or fruits.",
+        "organic_solution": "Spray neem oil or baking soda solution weekly to control fungal growth."
+    },
+
+    "Apple___healthy": {
+        "cause": "No disease detected. The plant appears healthy.",
+        "treatment": "No treatment required. Maintain proper watering and nutrient supply.",
+        "organic_solution": "Use compost and organic fertilizers to keep the plant healthy."
+    },
+
+    "Potato___Early_blight": {
+        "cause": "Fungal disease caused by Alternaria solani, often appearing in warm and humid environments.",
+        "treatment": "Use fungicides such as chlorothalonil or mancozeb and remove infected leaves.",
+        "organic_solution": "Apply neem oil spray and ensure proper air circulation around plants."
+    },
+
+    "Potato___Late_blight": {
+        "cause": "Caused by the pathogen Phytophthora infestans which spreads rapidly in cool and wet conditions.",
+        "treatment": "Apply fungicides like copper fungicide or chlorothalonil and remove infected plants.",
+        "organic_solution": "Use copper-based organic sprays and avoid overhead watering."
+    },
+
+    "Potato___healthy": {
+        "cause": "No disease detected in the potato plant.",
+        "treatment": "No treatment needed. Maintain good soil nutrients and irrigation.",
+        "organic_solution": "Use organic compost and mulch to keep soil healthy."
+    },
+
+    "Tomato___Leaf_Mold": {
+        "cause": "Fungal infection caused by Passalora fulva which thrives in high humidity.",
+        "treatment": "Improve ventilation and apply fungicides like chlorothalonil.",
+        "organic_solution": "Spray neem oil or potassium bicarbonate solution weekly."
+    },
+
+    "Tomato___Late_blight": {
+        "cause": "Disease caused by Phytophthora infestans which spreads quickly in wet conditions.",
+        "treatment": "Apply copper fungicides and remove infected plant parts.",
+        "organic_solution": "Use copper-based organic fungicides and maintain good airflow."
+    },
+
+    "Tomato___Yellow_Leaf_Curl_Virus": {
+        "cause": "Virus transmitted by whiteflies which causes yellowing and curling of leaves.",
+        "treatment": "Control whiteflies using insecticides and remove infected plants.",
+        "organic_solution": "Use neem oil spray and introduce natural predators like ladybugs."
+    },
+
+    "Tomato___healthy": {
+        "cause": "No disease detected. The tomato plant is healthy.",
+        "treatment": "No treatment required. Continue regular plant care.",
+        "organic_solution": "Use organic fertilizers and maintain balanced watering."
+    }
+}

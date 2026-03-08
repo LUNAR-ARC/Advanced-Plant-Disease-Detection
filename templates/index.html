@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Plant Disease Detection</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #134e5e, #71b280);
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1300px;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .right {
+            background: rgba(0,0,0,0.15);
+            color: white;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        /* Upload Button */
+        .upload-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: #27ae60;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Main Buttons */
+        button {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s ease;
+        }
+
+        .predict-btn {
+            background: #2ecc71;
+        }
+
+        .webcam-btn {
+            background: #3498db;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .preview {
+            margin-top: 20px;
+        }
+
+        .preview img {
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .result-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .info {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        hr {
+            margin: 20px 0;
+            opacity: 0.4;
+        }
+
+        @media(max-width: 1000px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+
+        <h1>🌿 Advanced Plant Disease Detection</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <!-- Hidden file input -->
+            <input type="file" id="fileInput" name="image"
+                   accept="image/*" required
+                   onchange="previewImage(event)"
+                   style="display:none;">
+
+            <!-- Styled label as button -->
+            <label for="fileInput" class="upload-btn">
+                📁 Choose Leaf Image
+            </label>
+
+            <div id="file-name" style="margin-top:10px; color:white;"></div>
+
+            <br>
+
+            <button type="submit" class="predict-btn">
+                🔍 Predict Disease
+            </button>
+
+        </form>
+
+        <a href="/webcam">
+            <button class="webcam-btn">
+                📷 Live Webcam Detection
+            </button>
+        </a>
+
+        <!-- Image Preview -->
+        <div class="preview">
+            <img id="preview-img" style="display:none;">
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+
+        {% if result %}
+        <div class="result-box">
+
+            <h2>🩺 {{ result.disease }}</h2>
+
+            
+
+            <div class="info">
+                Infection Area:
+                <span class="highlight">{{ result.infection_percent }}%</span>
+            </div>
+
+            <div class="info">
+                Severity:
+                <span class="highlight">{{ result.severity }}</span>
+            </div>
+
+            {% if recommendation %}
+            <hr>
+
+            <div class="info">
+                🌱 Cause: {{ recommendation.cause }}
+            </div>
+
+            <div class="info">
+                💊 Treatment: {{ recommendation.treatment }}
+            </div>
+
+            <div class="info">
+                🍃 Organic Solution: {{ recommendation.organic_solution }}
+            </div>
+            {% endif %}
+
+        </div>
+        {% else %}
+        <div class="result-box">
+            <h2>No prediction yet</h2>
+            <p>Upload a leaf image to analyze disease and severity.</p>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script>
+function previewImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    document.getElementById("file-name").innerText = file.name;
+
+    const reader = new FileReader();
+    reader.onload = function(){
+        const img = document.getElementById('preview-img');
+        img.src = reader.result;
+        img.style.display = "block";
+    }
+    reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
